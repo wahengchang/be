@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import {signup, init} from '../../lib/firebase';
 import './index.css';
 
 class Login extends Component {
@@ -18,6 +19,10 @@ class Login extends Component {
   handleSubmit = (e) => {
     console.log(' ------ handleSubmit ------')
     console.log(this.state)
+    e.preventDefault();
+
+    const {email, password} = this.state
+    signup(email, password)
     e.preventDefault();
   }
 
