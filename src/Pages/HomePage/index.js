@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './index.css'
 
+/*eslint no-useless-constructor: "true"*/
 class HomePage extends Component {
   render() {
     return (
