@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import "./index.css";
-/* eslint-disable no-alert, no-console */
+import React, { Component } from 'react'
+import './index.css'
 
 class HomePage extends Component {
   render() {
@@ -10,8 +9,8 @@ class HomePage extends Component {
           <h1 className="App-title">Welcome to Home page</h1>
         </header>
       </div>
-    );
+    )
   }
 }
 
-export default HomePage;
+export default HomePage
