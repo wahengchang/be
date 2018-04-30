@@ -5,13 +5,14 @@ import './index.css'
 class HomePage extends Component {
   constructor(){
     super()
+
   }
 
   componentDidMount(){
   }
 
   render() {
-    const categorys = this.props.categorys
+    const {categorys = []} = this.props
 
     return (
       <div className="App">
