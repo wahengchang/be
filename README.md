@@ -1,4 +1,6 @@
-## Run Dev (1 time)
+TravisCI: [![Build Status](https://travis-ci.org/bs-blog/be.svg?branch=master)](https://travis-ci.org/bs-blog/be)  
+
+
 ```
 $ source env.sh
 $ npm run locator 
