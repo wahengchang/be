@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/bs-blog/be/issues"
   },
-  "homepage": "https://github.com/bs-blog/be#readme",
+  "homepage": "https://bs-blog.github.io/be/",
   "dependencies": {
     "firebase": "^4.12.1",
     "react": "^16.3.1",
