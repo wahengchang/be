@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PresentationalComponent from './index'
 
 class Container extends Component {
-  constructor(props){
+  constructor (props) {
     super(props)
     this.state = {currentUser: null}
   }
 
-  componentDidMount(){
+  componentDidMount () {
   }
 
-  render() {
+  render () {
     const {currentUser} = this.state
     return (
       <PresentationalComponent
         currentUser={currentUser}
-        />
-    );
+      />
+    )
   }
 }
 
-export default Container;
+export default Container

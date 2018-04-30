@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import {signup, init} from '../../lib/firebase';
-import './index.css';
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import { signup } from '../../lib/firebase'
+import './index.css'
 
 class Login extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       email: '',
       password: ''
@@ -13,17 +13,17 @@ class Login extends Component {
   }
 
   handleChange = (field) => (e) => {
-    this.setState({[field]: e.target.value});
+    this.setState({[field]: e.target.value})
   }
 
   handleSubmit = (e) => {
     console.log(' ------ handleSubmit ------')
     console.log(this.state)
-    e.preventDefault();
+    e.preventDefault()
 
     const {email, password} = this.state
     signup(email, password)
-    e.preventDefault();
+    e.preventDefault()
   }
 
   render() {
@@ -49,8 +49,8 @@ class Login extends Component {
           </form>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Login;
+export default Login

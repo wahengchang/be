@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import './index.css'
 
-
 class HomePage extends Component {
   constructor(){
     super()
@@ -28,7 +27,7 @@ class HomePage extends Component {
           }
         </div>
       </div>
-    );
+    )
   }
 }
 
