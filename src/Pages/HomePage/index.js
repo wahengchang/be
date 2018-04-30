@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './index.css'
 
+/*eslint no-useless-constructor: 0*/
 class HomePage extends Component {
   constructor(){
     super()
