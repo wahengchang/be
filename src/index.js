@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './Pages/Login/Container';
-import HomePage from './Pages/HomePage';
+import HomePage from './Pages/HomePage/Container';
 import Header from './Components/Common/Header';
 import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 import registerServiceWorker from './registerServiceWorker';
