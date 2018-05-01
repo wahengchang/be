@@ -15,10 +15,7 @@ class HomePage extends Component {
     const {categorys = []} = this.props
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to Home page</h1>
-        </header>
+      <div className="bodyWrapper">
 
         <div>
           {
