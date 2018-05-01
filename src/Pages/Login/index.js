@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
 import { signup } from '../../lib/firebase'
 import './index.css'
 
@@ -28,16 +27,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Login</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="bodyWrapper">
 
-        <div className="formWarpper">
+        <div className="formWrapper">
           <form className="pure-form pure-form-stacked" onSubmit={this.handleSubmit.bind(this)}>
               <fieldset>
                   <legend>A Stacked Form</legend>

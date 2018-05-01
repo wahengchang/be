@@ -16,10 +16,6 @@ class HomePage extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to Home page</h1>
-        </header>
-
         <div>
           {
             categorys.map((item, index) => (<div key={index}>
