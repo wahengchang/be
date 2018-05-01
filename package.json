@@ -9,7 +9,9 @@
     "locator": "node locator",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "node_modules/.bin/eslint src/"
+    "lint": "node_modules/.bin/eslint src/",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
