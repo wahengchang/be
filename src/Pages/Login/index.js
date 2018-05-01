@@ -28,7 +28,6 @@ class Login extends Component {
   render() {
     return (
       <div className="bodyWrapper">
-
         <div className="formWrapper">
           <form className="pure-form pure-form-stacked" onSubmit={this.handleSubmit.bind(this)}>
               <fieldset>
