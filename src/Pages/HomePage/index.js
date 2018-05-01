@@ -15,8 +15,7 @@ class HomePage extends Component {
     const {categorys = []} = this.props
 
     return (
-      <div className="bodyWrapper">
-
+      <div className="App">
         <div>
           {
             categorys.map((item, index) => (<div key={index}>

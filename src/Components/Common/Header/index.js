@@ -1,16 +1,17 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route , Link } from 'react-router-dom'
+import './Header.css'
 
 const matchFun = (url, title) => ({match}) => (
-  <li className={match ? 'active' : ''}>
+  <div className={match ? 'active' : ''}>
     <Link to={url}>
       {match ? '> ' : ''} {title}
     </Link>
-  </li>
+  </div>
 )
 
 const RouteLink = ({url, exact = false, title}) => (
-  <Route
+    <Route
     path={url}
     exact={exact}
     children={matchFun(url, title)}
@@ -18,11 +19,9 @@ const RouteLink = ({url, exact = false, title}) => (
 )
 
 const Header = () => (
-  <div>
-    <ul>
+  <div className="headerWrapper">
       <RouteLink url='/' exact={true} title='Home'/>
       <RouteLink url='/login' title='Login'/>
-    </ul>
   </div>
 )
 export default Header
