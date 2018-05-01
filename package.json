@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "npm run locator ; react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "npm run locator ; react-app-rewired build",
     "locator": "node locator",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "node_modules/.bin/eslint src/"
   },
@@ -22,6 +22,7 @@
   },
   "homepage": "https://bs-blog.github.io/be/",
   "dependencies": {
+    "antd": "^3.4.4",
     "firebase": "^4.12.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
@@ -30,6 +31,8 @@
   },
   "devDependencies": {
     "eslint": "^4.19.1",
+    "babel-plugin-import": "^1.7.0",
+    "react-app-rewired": "^1.5.2",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-node": "^6.0.1",
