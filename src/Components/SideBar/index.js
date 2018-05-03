@@ -20,7 +20,7 @@ const siderMenu = ({match}) => {
         </Link>
       </Menu.Item>
       <Menu.Item key={categoryPath}>
-        <Link to={categoryPat}h>
+        <Link to={categoryPath}>
           <Icon type="user" />
           <span className="nav-text">Category</span>
         </Link>
