@@ -11,7 +11,7 @@ const matchFun = (url, title) => ({match}) => (
 )
 
 const RouteLink = ({url, exact = false, title}) => (
-    <Route
+  <Route
     path={url}
     exact={exact}
     children={matchFun(url, title)}
