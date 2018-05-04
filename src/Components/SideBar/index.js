@@ -1,30 +1,29 @@
 import React, { Component } from 'react'
 import './index.css'
 import { Route, Link } from 'react-router-dom'
-import { Layout, Menu, Icon } from 'antd';
-import { params } from '../../lib/router'
-const { Sider } = Layout;
+import { Layout, Menu, Icon } from 'antd'
+import routers from '../../router'
+const { Sider } = Layout
+const { Item } = Menu
 
-const siderMenu = ({match}) => {
-  const categoryPath = params.category.path
-  const homePath = params.home.path
+const RowItem = ({path, title}) => {
+    return (
+      <Item key={title}>
+        <Link to={path}>
+          <Icon type='user' />
+          <span className="nav-text">{title}</span>
+        </Link>
+      </Item>
+    )
+}
+
+const SiderMenu = ({match}) => {
   return (
     <Menu
       theme="dark"
       mode="inline"
       defaultSelectedKeys={[match.url]}>
-      <Menu.Item key={homePath}>
-        <Link to={homePath}>
-          <Icon type="user" />
-          <span className="nav-text">Home</span>
-        </Link>
-      </Menu.Item>
-      <Menu.Item key={categoryPath}>
-        <Link to={categoryPath}>
-          <Icon type="user" />
-          <span className="nav-text">Category</span>
-        </Link>
-      </Menu.Item>
+      {routers.map(RowItem)}
     </Menu>
   )
 }
@@ -34,7 +33,7 @@ class SideBar extends Component {
     return (
       <Sider style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}>
         <div className="logo" />
-        <Route path="/:id" component={siderMenu} />
+        <Route path="/" component={SiderMenu} />
       </Sider>
     )
   }
