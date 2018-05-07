@@ -29,14 +29,22 @@ const signin = (email = '', password = '') => {
     })
 }
 
+const signout = () => {
+  return firebase.auth().signOut()
+}
+
 const getCurrentUser = (cb) => {
   firebase.auth().onAuthStateChanged(function(user) {
-    cb({
-      email: user.email,
-      displayName: user.displayName,
-      uid: user.uid,
-    })
+    if(user && user.email){
+      return cb({
+        email: user.email,
+        displayName: user.displayName,
+        uid: user.uid,
+      })
+    }
+
+    return cb(null)
   })
 }
 
-module.exports = {signup, signin, getCurrentUser}
+module.exports = {signup, signin, signout, getCurrentUser}

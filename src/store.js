@@ -1,23 +1,11 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
-import { routerReducer, ConnectedRouter } from 'react-router-redux'
+import {initialStateCurrentUser} from './reducers/currentUser'
+import currentUser from './reducers/currentUser'
+
 import thunk from 'redux-thunk'
 
 const reducers = combineReducers({
-  user: (state = {} , action) => {
-    console.log('state: ', state)
-    console.log('action:' , action)
-
-    switch (action.type) {
-      case 'ALERT_ACTION':
-        console.log('-=-=-=-=-= ALERT_ACTION -=-=-=-=-=')
-        return {
-          result: 'action.payload'
-        }
-      default:
-        return state
-    }
-  }
-
+  currentUser
 })
 
 const middleware = [
@@ -37,10 +25,11 @@ const composedEnhancers = compose(
   ...enhancers
 )
 
-const initialState = {}
 const store = createStore(
   reducers,
-  initialState,
+  {
+    currentUser: initialStateCurrentUser
+  },
   composedEnhancers
 )
 

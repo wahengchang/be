@@ -5,21 +5,37 @@ import './lib/firebase'
 import { BrowserRouter as Router } from 'react-router-dom'
 import registerServiceWorker from './registerServiceWorker'
 import SideBar from './Components/SideBar'
-import BigContent from './Components/BigContent'
+import PublicLayout from './Pages/PublicLayout'
+import PrivateLayout from './Pages/PrivateLayout'
+import Auth from './Components/Auth'
+import Private from './router/Private'
+import Public from './router/Public'
 import { Layout } from 'antd';
 
 import { Provider } from 'react-redux'
 
 import store from './store'
 
+const Peter =() => <div>you are public</div>
+
 const Root = ({store}) => 
   <Provider store={store}>
-      <Router>
-        <Layout>
-          <SideBar />
-          <BigContent />
-        </Layout>
-      </Router>
+    <Auth>
+        <Private>
+          <Router>
+            <Layout>
+              <SideBar />
+              <PublicLayout />
+            </Layout>
+          </Router>
+        </Private>
+        <Public>
+            <Peter />
+            <Router>
+              <PrivateLayout />
+            </Router>
+        </Public>
+    </Auth>
   </Provider>
 
 ReactDOM.render(

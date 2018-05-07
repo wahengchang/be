@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './index.css'
 import { Route, Link } from 'react-router-dom'
 import { Layout, Menu, Icon } from 'antd'
-import routers from '../../router'
+import router from '../../router/publicConfig'
 const { Sider } = Layout
 const { Item } = Menu
 
@@ -23,7 +23,7 @@ const SiderMenu = ({match}) => {
       theme="dark"
       mode="inline"
       defaultSelectedKeys={[match.url]}>
-      {routers.map(RowItem)}
+      {router.map(RowItem)}
     </Menu>
   )
 }

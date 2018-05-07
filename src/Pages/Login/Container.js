@@ -1,28 +1,21 @@
 import React, { Component } from 'react'
+import { signin } from '../../lib/firebase'
 import PresentationalComponent from './index'
 
 import { connect } from 'react-redux'
 
 class Container extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {currentUser: null}
+  signin = (email, password)  => {
+    return signin(email, password)
   }
-
-  componentDidMount () {
-  }
-
   render () {
-    const {set} = this.props
-    const {currentUser} = this.state
-
-    console.log('set: ', set)
+    const {currentUser} = this.props
 
     return (
       <div>
-        <button onClick={set}> click me </button>
         <PresentationalComponent
           currentUser={currentUser}
+          signin={this.signin}
         />
       </div>
     )
@@ -30,22 +23,11 @@ class Container extends Component {
 }
 
 function mapStateToProps(state){
-  return { history: state.history }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    set: (state = {}, action) => {
-      setTimeout(() => {
-        return dispatch({type: 'ALERT_ACTION'})
-      }, 3000);
-    }
-  }
+  return { currentUser: state.currentUser }
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(Container)
 
 // export default Container
