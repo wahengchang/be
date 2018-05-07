@@ -8,12 +8,21 @@ import SideBar from './Components/SideBar'
 import BigContent from './Components/BigContent'
 import { Layout } from 'antd';
 
+import { Provider } from 'react-redux'
+
+import store from './store'
+
+const Root = ({store}) => 
+  <Provider store={store}>
+      <Router>
+        <Layout>
+          <SideBar />
+          <BigContent />
+        </Layout>
+      </Router>
+  </Provider>
+
 ReactDOM.render(
-  <Router>
-    <Layout>
-      <SideBar />
-      <BigContent />
-    </Layout>
-  </Router>
+  <Root store={store} />
 , document.getElementById('root'))
 registerServiceWorker()
