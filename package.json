@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "NODE_ENV=production node production-server.js",
+    "dev": "react-app-rewired start",
     "build": "npm run locator ; react-app-rewired build",
     "locator": "node locator",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "node_modules/.bin/eslint src/",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "heroku-postbuild": "npm run build; npm run start"
   },
   "repository": {
     "type": "git",
