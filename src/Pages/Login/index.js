@@ -1,7 +1,7 @@
+/*eslint-disable no-unused-vars*/
 import React, { Component } from 'react'
-import { signin, getCurrentUser } from '../../lib/firebase'
 import './index.css'
-import { Form, Input, Button } from 'antd'
+import { Form, Input } from 'antd'
 const FormItem = Form.Item;
 
 // read more ant: Form
@@ -12,17 +12,8 @@ class Login extends Component {
     super(props)
     this.state = {
       email: '',
-      password: '',
-      currentUser: null
+      password: ''
     }
-  }
-
-  componentDidMount(){
-    console.log(' ------ componentDidMount ------')
-    getCurrentUser((user)=>{
-      console.log(user)
-      this.setState({currentUser: user})
-    })
   }
 
   handleChange = (e, field) => {
@@ -32,25 +23,21 @@ class Login extends Component {
   handleSubmit = (e) => {
     console.log(' ------ handleSubmit ------')
     console.log(this.state)
-
     e.preventDefault()
     const {email, password} = this.state
+    const {signin} = this.props
     return signin(email, password)
-    .then(user => {
-      return console.log(user)
-    })
   }
 
   render() {
     const {getFieldDecorator} = this.props.form
-    const {currentUser} = this.state
 
     const RequiredField = ({field, placeholder}) => 
       getFieldDecorator(field,{
         onChange: (e) => this.handleChange(e, field),
         rules: [{
           required: true,
-          message: `What\'s your ${field}?`
+          message: `What's your ${field}?`
         }]
       })(
         <Input placeholder={placeholder} />

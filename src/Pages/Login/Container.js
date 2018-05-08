@@ -1,23 +1,33 @@
 import React, { Component } from 'react'
+import { signin } from '../../lib/firebase'
 import PresentationalComponent from './index'
 
+import { connect } from 'react-redux'
+
 class Container extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {currentUser: null}
+  signin = (email, password)  => {
+    return signin(email, password)
   }
-
-  componentDidMount () {
-  }
-
   render () {
-    const {currentUser} = this.state
+    const {currentUser} = this.props
+
     return (
-      <PresentationalComponent
-        currentUser={currentUser}
-      />
+      <div>
+        <PresentationalComponent
+          currentUser={currentUser}
+          signin={this.signin}
+        />
+      </div>
     )
   }
 }
 
-export default Container
+function mapStateToProps(state){
+  return { currentUser: state.currentUser }
+}
+
+export default connect(
+  mapStateToProps
+)(Container)
+
+// export default Container
