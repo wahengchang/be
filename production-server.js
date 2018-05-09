@@ -1,10 +1,14 @@
 var express = require('express')
+var path = require('path')
 var app = express()
 
-const port = process.env.PORT || parseInt(process.env.PORT, 10) || 3000
+const port = process.env.PORT || 3000
 
-app.use('/',express.static('build'))
-// app.use('/be',express.static('build')); // unexpect router, will be fixed
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`)
