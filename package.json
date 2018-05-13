@@ -13,7 +13,9 @@
     "lint": "node_modules/.bin/eslint src/",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "@storybook/cli": "^3.4.4",
     "babel-plugin-import": "^1.7.0",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
@@ -47,6 +50,12 @@
     "eslint-plugin-standard": "^3.1.0",
     "firebase-admin": "^5.12.0",
     "react-app-rewired": "^1.5.2",
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "@storybook/react": "^3.4.4",
+    "@storybook/addon-actions": "^3.4.4",
+    "@storybook/addon-links": "^3.4.4",
+    "@storybook/addons": "^3.4.4",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0"
   }
 }
