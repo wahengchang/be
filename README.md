@@ -13,3 +13,13 @@ Add `localhost.dev` to `127.0.0.1` /etc/host
 ```
 $ npm start
 ```
+
+## Run storybook
+```
+$ npm run storybook
+```
+
+open browser `http://localhost:9009/`
+
+![image](https://user-images.githubusercontent.com/5538753/39965678-5065af16-56d0-11e8-852c-44e41bc9069b.png)
+
