@@ -4,7 +4,7 @@ import Logout from '../Pages/Logout/Container'
 const config = [
     {
         path: '/',
-        title: 'Home',
+        title: 'Category',
         component: HomePage
     },
     {

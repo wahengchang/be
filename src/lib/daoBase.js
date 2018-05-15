@@ -25,4 +25,15 @@ module.exports = class Base {
     on(cb) {
         this.fetchDataFunction(cb)
     }
+
+    validateUpdatePayload(payload) {
+        return true
+    }
+
+    updateById(id, payload) {
+        if(this.validateUpdatePayload(payload))
+            return this.ref.child(id).update(payload)
+        
+        return Promise.reject('invalidate Data')
+    }
 }

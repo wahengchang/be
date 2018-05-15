@@ -17,11 +17,16 @@ class Container extends Component {
     })
   }
 
+  updateCategoryById = (id, payload) => {
+    return this.dao.updateById(id, payload)
+  }
+
   render() {
     const {categorys = []} = this.state
     return (
       <PresentationalComponent
             categorys={categorys}
+            updateCategoryById={this.updateCategoryById}
         />
     );
   }
