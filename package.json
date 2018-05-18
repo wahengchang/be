@@ -31,6 +31,7 @@
     "draft-js": "^0.10.5",
     "firebase": "^4.12.1",
     "fs": "0.0.1-security",
+    "medium-draft": "^0.6.0-beta1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-redux": "^5.0.7",

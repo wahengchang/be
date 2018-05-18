@@ -1,9 +1,8 @@
 
 .editorPageWrapper {
-    width: 480px;
     margin: 0 auto;
 }
 .editorWrapper {
-    border: 1px solid grey;
-    padding: 6px;
+	width: 100%;
+  background: white;
 }

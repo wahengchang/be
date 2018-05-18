@@ -5,7 +5,7 @@ import EditorComponent from '../src/Components/EditorPage/Editor'
 
 const style = {
   border: 'black solid 1px',
-  width: '100px',
+  width: '500px',
   padding: '10px 5px'
 }
 

@@ -1,16 +1,59 @@
 import React, { Component } from 'react'
 import './index.css'
-import {Editor, EditorState} from 'draft-js';
+import DraftJS from 'draft-js'
+import firebase from 'firebase'
+// import {Editor, EditorState} from 'medium-draft'
 
-class EditorComponent extends Component {
+import {
+    Editor,
+    createEditorState,
+  } from 'medium-draft';
+  
+  class EditorComponent extends React.Component {
     constructor(props) {
-      super(props)
-      this.state = {editorState: EditorState.createEmpty()};
-      this.onChange = (editorState) => this.setState({editorState});
+      super(props);
+	
+			this.ref = firebase.database().ref('Storys')
+
+      this.state = {
+        editorState: createEditorState(), // for empty content
+      };
+  
+      /*
+      this.state = {
+        editorState: createEditorState(data), // with content
+      };
+      */
+  
+      this.onChange = (editorState) => {
+				this.setState({ editorState })
+				
+				// console.log('editorState.getCurrentContent(): ', editorState.getCurrentContent())
+				// console.log('editorState.getCurrentContent().getPlainText(): ', editorState.getCurrentContent().getPlainText())
+
+				if(editorState.getCurrentContent().getPlainText().includes('peter')) {
+					console.log(' -=-=-=-=-=-=- peter =-=-=-=-=-=')
+					this.ref.push().set(DraftJS.convertToRaw(editorState.getCurrentContent()))
+				}
+
+      };
     }
+  
+    componentDidMount() {
+      this.refs.editor.focus();
+    }
+  
     render() {
-        return <Editor editorState={this.state.editorState} onChange={this.onChange} />
+      const { editorState } = this.state;
+      return (
+        <div className="editorComponentWrapper">
+					<Editor
+							ref="editor"
+							editorState={editorState}
+							onChange={this.onChange} />
+        </div>
+      )
     }
-}
+  }
 
 export default EditorComponent
