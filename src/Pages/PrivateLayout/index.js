@@ -8,8 +8,9 @@ class BigContent extends Component {
   render() {
     const {path, component} = routers[0]
     return (
-      <Layout>
-        <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+      <Layout hasSider={false}>
+        {/* <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}> */}
+        <Content style={{height: '100vh'}}>
           <Route exact path={path} component={component}/>
         </Content>
         <Footer style={{ textAlign: 'center' }}>

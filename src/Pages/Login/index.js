@@ -7,6 +7,12 @@ const FormItem = Form.Item;
 // read more ant: Form
 // https://ant.design/components/form/
 
+const style = {
+  margin: 'auto',
+  padding: '50px 20px',
+  maxWidth: '500px'
+}
+
 class Login extends Component {
   constructor(props) {
     super(props)
@@ -44,7 +50,7 @@ class Login extends Component {
       )
 
     return (
-      <Form onSubmit={this.handleSubmit.bind(this)}>
+      <Form onSubmit={this.handleSubmit.bind(this)} style={style}>
         <legend>A Stacked Form</legend>
 
         <FormItem >

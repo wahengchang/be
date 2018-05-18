@@ -16,8 +16,6 @@ import { Provider } from 'react-redux'
 
 import store from './store'
 
-const Peter =() => <div>you are public</div>
-
 const Root = ({store}) => 
   <Provider store={store}>
     <Auth>
@@ -30,7 +28,6 @@ const Root = ({store}) =>
           </Router>
         </Private>
         <Public>
-            <Peter />
             <Router>
               <PrivateLayout />
             </Router>
