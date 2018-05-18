@@ -14,6 +14,9 @@ const configList = ['影音', '運動', '文章', '2018', '2017', '2016']
 return Promise.all(
     configList.map(
         item => 
-            ref.push().set({name: item})
+            ref.push().set({
+                name: item,
+                createdAt: (new Date()).getTime()
+            })
     )
 )
