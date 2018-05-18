@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import './index.css'
 import { Row, Col} from 'antd'
 import UpdateCategoryModal from '../../Components/HomePage/UpdateCategoryModal'
-
-const {timestampToDateFormat} = require('../../lib/time')
+import {timestampToDateFormat} from '../../lib/time'
 
 /*eslint no-useless-constructor: 0*/
 class HomePage extends Component {
