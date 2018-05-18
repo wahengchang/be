@@ -36,4 +36,20 @@ module.exports = class Base {
         
         return Promise.reject('invalidate Data')
     }
+
+    validateCreatePayload(payload) {
+        return true
+    }
+
+    create(payload) {
+        if(this.validateCreatePayload(payload)){
+            if(!payload.createdAt){
+                const createdAt = (new Date()).getTime()
+                payload = {...payload, createdAt }
+            }
+            return this.ref.push().set(payload)
+        }
+        
+        return Promise.reject('invalidate Data')
+    }
 }

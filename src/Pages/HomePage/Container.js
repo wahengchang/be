@@ -20,6 +20,9 @@ class Container extends Component {
   updateCategoryById = (id, payload) => {
     return this.dao.updateById(id, payload)
   }
+  createCategory = (payload) => {
+    return this.dao.create(payload)
+  }
 
   render() {
     const {categorys = []} = this.state
@@ -27,6 +30,7 @@ class Container extends Component {
       <PresentationalComponent
             categorys={categorys}
             updateCategoryById={this.updateCategoryById}
+            createCategory={this.createCategory}
         />
     );
   }
