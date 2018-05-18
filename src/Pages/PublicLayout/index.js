@@ -13,7 +13,7 @@ class BigContent extends Component {
 
     return (
       <Layout style={{ marginLeft: 200 }}>
-        <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+        <Content style={{ margin: '24px 16px 0', overflow: 'initial', height: '100vh' }}>
           {
             routers.map(({path, component}, index)=>
               <Route exact path={path} component={component} key={index}/>
