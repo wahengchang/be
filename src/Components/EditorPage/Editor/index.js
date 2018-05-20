@@ -1,16 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './index.css'
-import {Editor, EditorState} from 'draft-js';
-
-class EditorComponent extends Component {
+import { Editor,createEditorState } from 'medium-draft'
+  
+  class EditorComponent extends React.Component {
     constructor(props) {
       super(props)
-      this.state = {editorState: EditorState.createEmpty()};
-      this.onChange = (editorState) => this.setState({editorState});
+      const {rawContent} = this.props.storyData
+      this.state = {
+        editorState: createEditorState(rawContent)
+      }
     }
+  
+    componentDidMount() {
+      this.refs.editor.focus();
+    }
+
+    onChange = (editorState) => {
+      return this.setState({ editorState })
+    }
+
     render() {
-        return <Editor editorState={this.state.editorState} onChange={this.onChange} />
+      const { editorState } = this.state;
+      return (
+        <div className="editorComponentWrapper">
+					<Editor
+							ref="editor"
+							editorState={editorState}
+							onChange={this.onChange} />
+        </div>
+      )
     }
-}
+  }
 
 export default EditorComponent

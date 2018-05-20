@@ -1,6 +1,7 @@
 import HomePage from '../Pages/HomePage/Container'
 import Logout from '../Pages/Logout/Container'
-import Editor from '../Pages/Editor/Container'
+import StoryEditor from '../Pages/StoryEditor/Container'
+import StoryList from '../Pages/StoryList/Container'
 
 const config = [
     {
@@ -9,9 +10,15 @@ const config = [
         component: HomePage
     },
     {
-        path: '/editor',
-        title: 'Editor',
-        component: Editor
+        path: '/storys/:id',
+        title: 'Story Editor',
+        isSidebar: false,
+        component: StoryEditor
+    },
+    {
+        path: '/storys',
+        title: 'Storys',
+        component: StoryList
     },
     {
         path: '/logout',
