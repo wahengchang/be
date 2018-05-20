@@ -6,7 +6,9 @@ import router from '../../router/publicConfig'
 const { Sider } = Layout
 const { Item } = Menu
 
-const RowItem = ({path, title}) => {
+const RowItem = ({path, title, isSidebar=true}) => {
+    if(!isSidebar) return 
+
     return (
       <Item key={title}>
         <Link to={path}>

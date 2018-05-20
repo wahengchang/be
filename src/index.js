@@ -15,6 +15,7 @@ import { Layout } from 'antd';
 import { Provider } from 'react-redux'
 
 import store from './store'
+import './lib/polyfill.js'
 
 const Root = ({store}) => 
   <Provider store={store}>
