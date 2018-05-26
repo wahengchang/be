@@ -6,25 +6,22 @@ import router from '../../router/publicConfig'
 const { Sider } = Layout
 const { Item } = Menu
 
-const RowItem = ({path, title, isSidebar=true}) => {
-    if(!isSidebar) return 
+const RowItem = ({ path, title, isSidebar = true }) => {
+  if (!isSidebar) return
 
-    return (
-      <Item key={title}>
-        <Link to={path}>
-          <Icon type='user' />
-          <span className="nav-text">{title}</span>
-        </Link>
-      </Item>
-    )
+  return (
+    <Item key={title}>
+      <Link to={path}>
+        <Icon type="user" />
+        <span className="nav-text">{title}</span>
+      </Link>
+    </Item>
+  )
 }
 
-const SiderMenu = ({match}) => {
+const SiderMenu = ({ match }) => {
   return (
-    <Menu
-      theme="dark"
-      mode="inline"
-      defaultSelectedKeys={[match.url]}>
+    <Menu theme="dark" mode="inline" defaultSelectedKeys={[match.url]}>
       {router.map(RowItem)}
     </Menu>
   )
@@ -33,7 +30,14 @@ const SiderMenu = ({match}) => {
 class SideBar extends Component {
   render() {
     return (
-      <Sider style={{ overflow: 'auto', height: '100vh', position: 'fixed', left: 0 }}>
+      <Sider
+        style={{
+          overflow: 'auto',
+          height: '100vh',
+          position: 'fixed',
+          left: 0
+        }}
+      >
         <div className="logo" />
         <Route path="/" component={SiderMenu} />
       </Sider>

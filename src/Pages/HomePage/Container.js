@@ -1,39 +1,39 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PresentationalComponent from './index'
 import dao from './dao'
-import firebase from 'firebase';
+import firebase from 'firebase'
 
 class Container extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.database = firebase.database()
     this.dao = new dao(this.database)
-    this.state = {categorys: []}
+    this.state = { categorys: [] }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.dao.on(categorys => {
-      return this.setState({categorys})
+      return this.setState({ categorys })
     })
   }
 
   updateCategoryById = (id, payload) => {
     return this.dao.updateById(id, payload)
   }
-  createCategory = (payload) => {
+  createCategory = payload => {
     return this.dao.create(payload)
   }
 
   render() {
-    const {categorys = []} = this.state
+    const { categorys = [] } = this.state
     return (
       <PresentationalComponent
-            categorys={categorys}
-            updateCategoryById={this.updateCategoryById}
-            createCategory={this.createCategory}
-        />
-    );
+        categorys={categorys}
+        updateCategoryById={this.updateCategoryById}
+        createCategory={this.createCategory}
+      />
+    )
   }
 }
 
-export default Container;
+export default Container

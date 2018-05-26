@@ -5,18 +5,15 @@ import { signout } from '../../lib/firebase'
 import { connect } from 'react-redux'
 
 class Container extends Component {
-  signout = ()  => {
-    return signout()
-    .then( ()=>window.location.replace("/"))
+  signout = () => {
+    return signout().then(() => window.location.replace('/'))
   }
-  componentWillMount(){
+  componentWillMount() {
     return this.signout()
   }
-  render () {
+  render() {
     return null
   }
 }
 
-export default connect(
-  null
-)(Container)
+export default connect(null)(Container)

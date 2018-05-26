@@ -6,35 +6,36 @@ const FormItem = Form.Item
 // https://github.com/ant-design/ant-design/blob/master/components/form/demo/form-in-modal.md
 
 class UpdateCategoryModal extends Component {
-    componentWillMount(){
-        console.log(' ------- componentWillMount -------')
-    }
+  componentWillMount() {
+    console.log(' ------- componentWillMount -------')
+  }
 
-    render() {
-        const {onCancel, onOk, visible, item, form} = this.props
-        const { getFieldDecorator } = form
-        return (
-            <Modal
-                visible={visible}
-                title={`Update ${item.name} Cateogy`}
-                okText= "Update"
-                onCancel={onCancel}
-                onOk={onOk}
-            >
-                <Form layout="vertical">
-                    <FormItem label="Name">
-                    {getFieldDecorator('name', {
-                        rules: [{ required: true, message: 'Please input the title of Cateogy!' }],
-                    })(
-                        <Input />
-                    )}
-                    </FormItem>
-                </Form>
-            </Modal>
-
-        )
-    }
+  render() {
+    const { onCancel, onOk, visible, item, form } = this.props
+    const { getFieldDecorator } = form
+    return (
+      <Modal
+        visible={visible}
+        title={`Update ${item.name} Cateogy`}
+        okText="Update"
+        onCancel={onCancel}
+        onOk={onOk}
+      >
+        <Form layout="vertical">
+          <FormItem label="Name">
+            {getFieldDecorator('name', {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input the title of Cateogy!'
+                }
+              ]
+            })(<Input />)}
+          </FormItem>
+        </Form>
+      </Modal>
+    )
+  }
 }
-
 
 export default Form.create()(UpdateCategoryModal)
