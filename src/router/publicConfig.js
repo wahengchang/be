@@ -4,27 +4,27 @@ import StoryEditor from '../Pages/StoryEditor/Container'
 import StoryList from '../Pages/StoryList/Container'
 
 const config = [
-    {
-        path: '/',
-        title: 'Category',
-        component: HomePage
-    },
-    {
-        path: '/storys/:id',
-        title: 'Story Editor',
-        isSidebar: false,
-        component: StoryEditor
-    },
-    {
-        path: '/storys',
-        title: 'Storys',
-        component: StoryList
-    },
-    {
-        path: '/logout',
-        title: 'Logout',
-        component: Logout
-    }
+  {
+    path: '/',
+    title: 'Category',
+    component: HomePage
+  },
+  {
+    path: '/storys/:id',
+    title: 'Story Editor',
+    isSidebar: false,
+    component: StoryEditor
+  },
+  {
+    path: '/storys',
+    title: 'Storys',
+    component: StoryList
+  },
+  {
+    path: '/logout',
+    title: 'Logout',
+    component: Logout
+  }
 ]
-    
+
 export default config

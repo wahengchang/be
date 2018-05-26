@@ -5,11 +5,11 @@ import PresentationalComponent from './index'
 import { connect } from 'react-redux'
 
 class Container extends Component {
-  signin = (email, password)  => {
+  signin = (email, password) => {
     return signin(email, password)
   }
-  render () {
-    const {currentUser} = this.props
+  render() {
+    const { currentUser } = this.props
 
     return (
       <div>
@@ -22,12 +22,10 @@ class Container extends Component {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return { currentUser: state.currentUser }
 }
 
-export default connect(
-  mapStateToProps
-)(Container)
+export default connect(mapStateToProps)(Container)
 
 // export default Container

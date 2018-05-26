@@ -1,17 +1,16 @@
-const isEmptyObject = (myObject) => {
-    for(var key in myObject) {
-        if (myObject.hasOwnProperty(key)) {
-            return false;
-        }
+const isEmptyObject = myObject => {
+  for (var key in myObject) {
+    if (myObject.hasOwnProperty(key)) {
+      return false
     }
-    return true;
+  }
+  return true
 }
 
-if(window) {
-    window.isEmptyObject = isEmptyObject
+if (window) {
+  window.isEmptyObject = isEmptyObject
 }
 
-if(global) {
-    global.isEmptyObject = isEmptyObject
+if (global) {
+  global.isEmptyObject = isEmptyObject
 }
-
