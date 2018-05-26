@@ -12,7 +12,7 @@ class Container extends Component {
     ) {
       return this.props.children
     } else {
-      return null;
+      return null
     }
   }
 }
