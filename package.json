@@ -33,6 +33,7 @@
     "draft-js-buttons": "^2.0.1",
     "draft-js-inline-toolbar-plugin": "^2.0.3",
     "draft-js-plugins-editor": "^2.0.8",
+    "draft-js-video-plugin": "^2.0.1",
     "draftjs-md-converter": "^1.1.0",
     "firebase": "^4.12.1",
     "fs": "0.0.1-security",
