@@ -20,17 +20,10 @@ class BigContent extends Component {
           }}
         >
           {routers.map(({ path, component, exact = true }, index) => {
-            return (
-              <Route
-                exact={exact}
-                path={path}
-                component={component}
-                key={index}
-              />
-            )
+            return <Route exact={exact} path={path} component={component} key={index} />
           })}
         </Content>
-        <Footer style={{ textAlign: 'center' }}>designed by</Footer>
+        {/* <Footer style={{ textAlign: 'center' }}>designed by</Footer> */}
       </Layout>
     )
   }

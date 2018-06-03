@@ -1,4 +1,13 @@
 .editorComponentWrapper {
-  width: 500px;
+  width: 768px;
   margin: auto;
+  min-height: 800px;
+}
+
+blockquote {
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 40px;
+  -webkit-margin-end: 40px;
 }

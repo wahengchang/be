@@ -1,6 +1,6 @@
 import React from 'react'
 import { EditorState, convertFromRaw } from 'draft-js'
-import Editor from 'draft-js-plugins-editor'
+import Editor, { createEditorStateWithText } from 'draft-js-plugins-editor'
 import { inlineToolbarPlugin } from './InlineToolbar'
 import './index.css'
 
@@ -14,9 +14,7 @@ class EditorComponent extends React.Component {
     const { rawContent } = this.props.storyData
     const contentState = convertFromRaw(rawContent)
     this.state = {
-      editorState: rawContent
-        ? EditorState.createWithContent(contentState)
-        : EditorState.createWithContent(contentState)
+      editorState: rawContent ? EditorState.createWithContent(contentState) : EditorState.createWithContent()
     }
   }
 

@@ -19,14 +19,10 @@ class EditorPage extends Component {
   onHandleSaveStory = () => {
     const { storyId } = this.props
     const editorState = this.refs.editorComponent.state.editorState
-    const data = JSON.stringify(
-      DraftJS.convertToRaw(editorState.getCurrentContent())
-    )
+    const data = JSON.stringify(DraftJS.convertToRaw(editorState.getCurrentContent()))
     const payload = { data }
     this.setState({ msg: 'Updating story ...' })
-    return this.props
-      .onHandleSaveStory(storyId, payload)
-      .then(() => this.reset())
+    return this.props.onHandleSaveStory(storyId, payload).then(() => this.reset())
   }
 
   render() {
@@ -41,9 +37,7 @@ class EditorPage extends Component {
         </Row>
         <div className="editorWrapper">
           {storyData &&
-            !global.isEmptyObject(storyData) && (
-              <EditorComponent ref="editorComponent" storyData={storyData} />
-            )}
+            !global.isEmptyObject(storyData) && <EditorComponent ref="editorComponent" storyData={storyData} />}
         </div>
       </div>
     )

@@ -13,7 +13,7 @@ class BigContent extends Component {
         <Content style={{ height: '100vh' }}>
           <Route exact path={path} component={component} />
         </Content>
-        <Footer style={{ textAlign: 'center' }}>designed by</Footer>
+        {/* <Footer style={{ textAlign: 'center' }}>designed by</Footer> */}
       </Layout>
     )
   }
