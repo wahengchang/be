@@ -1,7 +1,21 @@
-.editorComponentWrapper {
-  width: 768px;
+.editorLayout {
+  position: relative;
+  width: 80%;
   margin: auto;
-  min-height: 800px;
+}
+
+.editorComponentWrapper {
+  border-radius: 5px;
+  height: 760px;
+  overflow: scroll;
+  border: 1px solid rgba(3, 117, 121, 0.5);
+}
+
+.uploadBar {
+  margin-top: 12px;
+  border-radius: 5px;
+  border: 1px solid rgba(1, 2, 66, 0.178);
+  padding: 10px;
 }
 
 blockquote {
@@ -10,4 +24,22 @@ blockquote {
   -webkit-margin-after: 1em;
   -webkit-margin-start: 40px;
   -webkit-margin-end: 40px;
+}
+
+blockquote::before {
+  content: '';
+  display: block;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-left: -40px;
+  width: 5px;
+  height: 20px;
+}
+
+.public-DraftStyleDefault-pre {
+  background-color: rgba(0, 0, 0, 0.05);
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 25px;
+  -webkit-margin-end: 25px;
 }
