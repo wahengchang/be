@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import { Layout } from 'antd'
 import routers from '../../router/privateConfig'
-const { Content, Footer } = Layout
+const { Content } = Layout
+//const { Content, Footer } = Layout
 
 class BigContent extends Component {
   render() {
@@ -13,7 +14,7 @@ class BigContent extends Component {
         <Content style={{ height: '100vh' }}>
           <Route exact path={path} component={component} />
         </Content>
-        <Footer style={{ textAlign: 'center' }}>designed by</Footer>
+        {/* <Footer style={{ textAlign: 'center' }}>designed by</Footer> */}
       </Layout>
     )
   }

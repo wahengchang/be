@@ -14,9 +14,7 @@ class EditorComponent extends React.Component {
     const { rawContent } = this.props.storyData
     const contentState = convertFromRaw(rawContent)
     this.state = {
-      editorState: rawContent
-        ? EditorState.createWithContent(contentState)
-        : EditorState.createWithContent(contentState)
+      editorState: rawContent ? EditorState.createWithContent(contentState) : EditorState.createEmpty()
     }
   }
 
