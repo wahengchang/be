@@ -4,7 +4,8 @@ import './index.css'
 import { Route } from 'react-router-dom'
 import { Layout } from 'antd'
 import routers from '../../router/publicConfig'
-const { Header, Content, Footer } = Layout
+const { Header, Content } = Layout
+//const { Header, Content, Footer } = Layout
 
 class BigContent extends Component {
   render() {
