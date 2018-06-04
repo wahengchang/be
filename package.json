@@ -6,7 +6,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "start": "node production-server.js",
-    "dev": "react-app-rewired start",
+    "dev": "npm run locator ; react-app-rewired start",
     "build": "npm run locator ; react-app-rewired build",
     "locator": "node locator",
     "test": "react-app-rewired test --env=jsdom",
