@@ -1,14 +1,13 @@
 .editorLayout {
-  position: relative;
   width: 80%;
   margin: auto;
+  border: 1px solid rgba(3, 117, 121, 0.5);
+  border-radius: 5px;
 }
 
 .editorComponentWrapper {
-  border-radius: 5px;
-  height: 760px;
-  overflow: scroll;
-  border: 1px solid rgba(3, 117, 121, 0.5);
+  margin: auto;
+  min-height: 760px;
 }
 
 .uploadBar {
