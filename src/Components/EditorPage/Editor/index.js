@@ -1,30 +1,26 @@
 import React from 'react'
-import { EditorState, convertFromRaw } from 'draft-js'
-import Editor from 'draft-js-plugins-editor'
-import createVideoPlugin from 'draft-js-video-plugin'
-import { inlineToolbarPlugin } from './InlineToolbar'
+import { Editor, createEditorState } from 'medium-draft'
 import './index.css'
-import VideoAdd from './VideoAdd'
-
-const videoPlugin = createVideoPlugin()
-const { InlineToolbar } = inlineToolbarPlugin
-
-const plugins = [videoPlugin, inlineToolbarPlugin]
+import ImageSideBtn from './ImageSideBtn'
 
 class EditorComponent extends React.Component {
   constructor(props) {
     super(props)
     const { rawContent } = this.props.storyData
-    const contentState = convertFromRaw(rawContent)
     this.state = {
-      editorState: rawContent
-        ? EditorState.createWithContent(contentState)
-        : EditorState.createEmpty()
+      editorState: createEditorState(rawContent)
     }
+
+    this.sideButtons = [
+      {
+        title: 'Image',
+        component: ImageSideBtn
+      }
+    ]
   }
 
   componentDidMount() {
-    this.editor.focus()
+    this.refs.editor.focus()
   }
 
   onChange = editorState => {
@@ -37,22 +33,13 @@ class EditorComponent extends React.Component {
       <div className="editorLayout">
         <div className="editorComponentWrapper">
           <Editor
-            ref={element => {
-              this.editor = element
-            }}
+            ref="editor"
             editorState={editorState}
             onChange={this.onChange}
-            plugins={plugins}
-          />
-          <InlineToolbar />
-        </div>
-        <div className="uploadBar">
-          <VideoAdd
-            editorState={this.state.editorState}
-            onChange={this.onChange}
-            modifier={videoPlugin.addVideo}
+            sideButtons={this.sideButtons}
           />
         </div>
+        <div className="uploadBar" />
       </div>
     )
   }
