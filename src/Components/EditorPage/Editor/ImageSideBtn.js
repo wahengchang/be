@@ -8,11 +8,13 @@ export default class ImageSideBtn extends ImageSideButton {
     */
   onChange(e) {
     const file = e.target.files[0]
+    const name = file.name
+
     if (file.type.indexOf('image/') === 0) {
-      // This is a post request to server endpoint with image as `image`
       const formData = new FormData()
-      formData.append('image', file)
-      fetch('/your-server-endpoint', {
+      formData.append('file', file, name)
+      formData.append('name', name)
+      fetch('/ajax/upload', {
         method: 'POST',
         body: formData
       }).then(response => {
