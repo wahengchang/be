@@ -9,10 +9,3 @@
   margin: auto;
   min-height: 760px;
 }
-
-.uploadBar {
-  margin-top: 12px;
-  border-radius: 5px;
-  border: 1px solid rgba(1, 2, 66, 0.178);
-  padding: 10px;
-}

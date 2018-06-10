@@ -1,7 +1,11 @@
 import React from 'react'
-import { Editor, createEditorState } from 'medium-draft'
+import { Editor, createEditorState, Block, rendererFn } from 'medium-draft'
+
 import './index.css'
 import ImageSideBtn from './ImageSideBtn'
+import VideoSideBtn from './VideoSideBtn'
+import AtomicEmbedComponent from './AtomicEmbedComponent'
+import { AtomicBlock } from './AtomicBlock'
 
 class EditorComponent extends React.Component {
   constructor(props) {
@@ -15,6 +19,10 @@ class EditorComponent extends React.Component {
       {
         title: 'Image',
         component: ImageSideBtn
+      },
+      {
+        title: 'Video',
+        component: VideoSideBtn
       }
     ]
   }
@@ -27,19 +35,42 @@ class EditorComponent extends React.Component {
     return this.setState({ editorState })
   }
 
+  overideRendererFn = (setEditorState, getEditorState) => {
+    const atomicRenderers = {
+      embed: AtomicEmbedComponent
+    }
+    const rFnOld = rendererFn(setEditorState, getEditorState)
+    const rFnNew = contentBlock => {
+      const type = contentBlock.getType()
+      switch (type) {
+        case Block.ATOMIC:
+          return {
+            component: AtomicBlock,
+            editable: false,
+            props: {
+              components: atomicRenderers,
+              getEditorState
+            }
+          }
+        default:
+          return rFnOld(contentBlock)
+      }
+    }
+    return rFnNew
+  }
+
   render() {
-    const { editorState } = this.state
     return (
       <div className="editorLayout">
         <div className="editorComponentWrapper">
           <Editor
             ref="editor"
-            editorState={editorState}
+            editorState={this.state.editorState}
             onChange={this.onChange}
             sideButtons={this.sideButtons}
+            rendererFn={this.overideRendererFn}
           />
         </div>
-        <div className="uploadBar" />
       </div>
     )
   }
