@@ -10,13 +10,18 @@ const rowStyle = {
 }
 
 class StoryPage extends Component {
+  handleCreate = () => {
+    return this.props.createStory().then(newestStory => {
+      return window.location.replace(`/storys/${newestStory.id}`)
+    })
+  }
   render() {
     const { storys = [] } = this.props
     return (
       <div className="storyPageWrapper">
         <h1> Storys </h1>
         <Row style={{ marginBottom: '20px' }}>
-          <Button href="/"> New </Button>
+          <Button onClick={this.handleCreate}> New </Button>
         </Row>
         <div className="storyWrapper">
           {storys.map((item, index) => {
