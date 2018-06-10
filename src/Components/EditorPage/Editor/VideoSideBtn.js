@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { AtomicBlockUtils, EditorState } from 'draft-js'
+import styled from 'styled-components'
 
 export default class VideoSideBtn extends React.Component {
   static propTypes = {
@@ -16,7 +17,7 @@ export default class VideoSideBtn extends React.Component {
   }
 
   onClick() {
-    const url = window.prompt('Enter a URL', 'https://www.youtube.com/watch?v=PMNFaAUs2mo')
+    const url = window.prompt('Enter a URL', 'insert video link url, please')
     this.props.close()
     if (!url) {
       return
@@ -35,14 +36,24 @@ export default class VideoSideBtn extends React.Component {
 
   render() {
     return (
-      <button
-        className="md-sb-button md-sb-video-button"
-        type="button"
-        title="Add an Embed"
-        onClick={this.onClick}
-      >
-        <i className="fa fa-code" />
-      </button>
+      <VideoButton title="Add an embed Video" onClick={this.onClick}>
+        Video
+      </VideoButton>
     )
   }
 }
+
+const VideoButton = styled.button`
+  border: 1px solid #5b5b5b;
+  color: #6d6d6d;
+  cursor: pointer;
+  height: 30px;
+  width: 100px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 20px;
+  margin-right: 2px;
+  padding: 8px;
+  text-align: center;
+  transition: all 0.2s ease;
+`
