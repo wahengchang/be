@@ -1,5 +1,6 @@
 import { ImageSideButton, Block, addNewBlock } from 'medium-draft'
 import 'isomorphic-fetch'
+import './ImageSideBtn.css'
 
 export default class ImageSideBtn extends ImageSideButton {
   /*
@@ -35,4 +36,12 @@ export default class ImageSideBtn extends ImageSideButton {
     }
     this.props.close()
   }
+
+  // render() {
+  //   return (
+  //     <ImageButton title="Upload an Image from local">
+  //       Image
+  //     </ImageButton>
+  //   )
+  // }
 }

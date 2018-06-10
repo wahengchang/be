@@ -19,11 +19,11 @@ export default class VideoSideBtn extends React.Component {
   onClick() {
     const url = window.prompt('Enter a URL', 'insert video link url, please')
     this.props.close()
-    const isFromHttp = url.indexOf('http')
-    if (!url || isFromHttp === -1) {
-      return
-    }
-    this.addEmbedURL(url)
+
+    const isFromHttp = url && Array.isArray(url) && url.includes('http')
+    if (!isFromHttp) return
+
+    return this.addEmbedURL(url)
   }
 
   addEmbedURL(url) {
@@ -36,25 +36,15 @@ export default class VideoSideBtn extends React.Component {
   }
 
   render() {
-    return (
-      <VideoButton title="Add an embed Video" onClick={this.onClick}>
-        Video
-      </VideoButton>
-    )
+    return <VideoButton title="Add an embed Video" onClick={this.onClick} />
   }
 }
 
 const VideoButton = styled.button`
-  border: 1px solid #5b5b5b;
-  color: #6d6d6d;
-  cursor: pointer;
+  background-image: url(/static/video-128.png);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  width: 30px;
   height: 30px;
-  width: 100px;
-  border-radius: 15px;
-  font-weight: 700;
-  font-size: 20px;
-  margin-right: 2px;
-  padding: 8px;
-  text-align: center;
-  transition: all 0.2s ease;
+  border: 0px;
 `
