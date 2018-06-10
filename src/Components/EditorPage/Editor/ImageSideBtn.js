@@ -1,4 +1,3 @@
-import React from 'react'
 import { ImageSideButton, Block, addNewBlock } from 'medium-draft'
 import 'isomorphic-fetch'
 import './ImageSideBtn.css'
