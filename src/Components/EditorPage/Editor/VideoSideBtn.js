@@ -19,7 +19,8 @@ export default class VideoSideBtn extends React.Component {
   onClick() {
     const url = window.prompt('Enter a URL', 'insert video link url, please')
     this.props.close()
-    if (!url) {
+    const isFromHttp = url.indexOf('http')
+    if (!url || isFromHttp === -1) {
       return
     }
     this.addEmbedURL(url)

@@ -35,7 +35,7 @@ class EditorComponent extends React.Component {
     return this.setState({ editorState })
   }
 
-  rendererFn(setEditorState, getEditorState) {
+  overideRendererFn = (setEditorState, getEditorState) => {
     const atomicRenderers = {
       embed: AtomicEmbedComponent
     }
@@ -68,10 +68,9 @@ class EditorComponent extends React.Component {
             editorState={this.state.editorState}
             onChange={this.onChange}
             sideButtons={this.sideButtons}
-            rendererFn={this.rendererFn}
+            rendererFn={this.overideRendererFn}
           />
         </div>
-        <div className="uploadBar" />
       </div>
     )
   }
