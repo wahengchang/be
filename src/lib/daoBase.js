@@ -6,6 +6,13 @@ module.exports = class Base {
     this.ref = null
   }
 
+  static fbListToArray(fbList) {
+    return Object.entries(fbList).map(([id, item]) => ({
+      ...item,
+      id
+    }))
+  }
+
   normalize(result) {
     return result
   }
@@ -16,10 +23,7 @@ module.exports = class Base {
   }
 
   fbListToArray(fbList) {
-    return Object.entries(fbList).map(([id, item]) => ({
-      ...item,
-      id
-    }))
+    return Base.fbListToArray(fbList)
   }
 
   on(cb) {
@@ -31,8 +35,7 @@ module.exports = class Base {
   }
 
   updateById(id, payload) {
-    if (this.validateUpdatePayload(payload))
-      return this.ref.child(id).update(payload)
+    if (this.validateUpdatePayload(payload)) return this.ref.child(id).update(payload)
 
     return Promise.reject('invalidate Data')
   }
@@ -42,14 +45,21 @@ module.exports = class Base {
   }
 
   create(payload) {
-    if (this.validateCreatePayload(payload)) {
-      if (!payload.createdAt) {
-        const createdAt = new Date().getTime()
-        payload = { ...payload, createdAt }
-      }
-      return this.ref.push().set(payload)
+    if (!this.validateCreatePayload(payload)) return Promise.reject('invalidate Data')
+
+    if (!payload.createdAt) {
+      const createdAt = new Date().getTime()
+      payload = { ...payload, createdAt }
     }
 
-    return Promise.reject('invalidate Data')
+    return this.ref
+      .push()
+      .set(payload)
+      .then(() => {
+        return this.ref.once('value')
+      })
+      .then(snap => {
+        return snap
+      })
   }
 }
