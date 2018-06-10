@@ -1,0 +1,8 @@
+.md-side-toolbar .md-sb-img-button {
+  background-image: url(/static/image-128.png);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  border: 0px;
+}
