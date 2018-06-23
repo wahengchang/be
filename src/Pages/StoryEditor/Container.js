@@ -13,13 +13,16 @@ class Container extends Component {
     this.daoCategorys = new daoCategorys(this.database)
     this.state = {
       storyData: {},
-      categorys: []
+      categorys: [],
+      selectedCategory: []
     }
   }
 
   componentDidMount() {
     this.daoStory.on(storyData => {
-      return this.setState({ storyData })
+      const { categorys = {} } = storyData
+      const selectedCategory = Object.entries(categorys).map(item => item[0])
+      return this.setState({ storyData, selectedCategory })
     })
 
     this.daoCategorys.on(categorys => {
@@ -31,14 +34,20 @@ class Container extends Component {
     return this.daoStory.updateById(id, payload)
   }
 
+  onHandleChangeCategory(selectedCategory) {
+    this.setState({ selectedCategory })
+  }
+
   render() {
     const storyId = this.storyId
-    const { storyData, categorys } = this.state
+    const { storyData, categorys, selectedCategory } = this.state
     return (
       <PresentationalComponent
         storyId={storyId}
         storyData={storyData}
         categorys={categorys}
+        selectedCategory={selectedCategory}
+        onHandleChangeCategory={this.onHandleChangeCategory.bind(this)}
         onHandleSaveStory={this.onHandleSaveStory.bind(this)}
       />
     )

@@ -18,17 +18,19 @@ class EditorPage extends Component {
   }
 
   onHandleSaveStory = () => {
-    const { storyId } = this.props
+    const { storyId, selectedCategory = [] } = this.props
     const editorState = this.refs.editorComponent.state.editorState
     const data = JSON.stringify(DraftJS.convertToRaw(editorState.getCurrentContent()))
-    const payload = { data }
+    const categorys = {}
+    selectedCategory.forEach(item => (categorys[item] = true))
+    const payload = { data, categorys }
     this.setState({ msg: 'Updating story ...' })
     return this.props.onHandleSaveStory(storyId, payload).then(() => this.reset())
   }
 
   render() {
     const { msg } = this.state
-    const { storyId, storyData, categorys } = this.props
+    const { storyId, storyData, categorys, selectedCategory, onHandleChangeCategory } = this.props
     return (
       <div className="editorPageWrapper">
         <div className="editorPageTitleBox">
@@ -41,7 +43,14 @@ class EditorPage extends Component {
         <Row style={{ margin: '20px 0' }}>{msg && <span> {msg} </span>}</Row>
 
         <div>
-          <AddCategoryBloack categorys={categorys} />
+          {categorys &&
+            categorys.length > 1 && (
+              <AddCategoryBloack
+                categorys={categorys}
+                selectedCategory={selectedCategory}
+                onHandleChangeCategory={onHandleChangeCategory}
+              />
+            )}
         </div>
         <div className="editorWrapper">
           {storyData &&

@@ -1,16 +1,17 @@
 import React from 'react'
 import './index.css'
 
-import { Select, Row, Col } from 'antd'
+import { Select } from 'antd'
 const Option = Select.Option
 
 export default class AddCategoryBloack extends React.Component {
-  render() {
-    const { categorys } = this.props
+  handleChange = value => {
+    const { onHandleChangeCategory } = this.props
+    onHandleChangeCategory(value)
+  }
 
-    function handleChange(value) {
-      console.log(`selected ${value}`)
-    }
+  render() {
+    const { categorys, selectedCategory } = this.props
     return (
       <div className="addCategoryBlockWrapper">
         <span className="addCategoryTitle"> Category </span>
@@ -19,7 +20,8 @@ export default class AddCategoryBloack extends React.Component {
             mode="tags"
             style={{ width: '100%' }}
             placeholder="Select a Category"
-            onChange={handleChange}
+            onChange={this.handleChange}
+            defaultValue={selectedCategory}
           >
             {categorys.map(item => (
               <Option value={item.id} key={item.id}>
