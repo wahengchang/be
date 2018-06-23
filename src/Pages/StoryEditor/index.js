@@ -3,6 +3,7 @@ import './index.css'
 import { Row, Button } from 'antd'
 import DraftJS from 'draft-js'
 import EditorComponent from '../../Components/EditorPage/Editor'
+import AddCategoryBloack from '../../Components/EditorPage/AddCategoryBloack'
 
 class EditorPage extends Component {
   constructor(props) {
@@ -27,17 +28,26 @@ class EditorPage extends Component {
 
   render() {
     const { msg } = this.state
-    const { storyId, storyData } = this.props
+    const { storyId, storyData, categorys } = this.props
     return (
       <div className="editorPageWrapper">
-        <h1> Editor of {storyId}</h1>
-        <Row style={{ margin: '20px 0' }}>
-          <Button onClick={this.onHandleSaveStory}> Save </Button>
-          {msg && <span> {msg} </span>}
-        </Row>
+        <div className="editorPageTitleBox">
+          <h1> Editor of {storyId}</h1>
+          <Button onClick={this.onHandleSaveStory} type="primary">
+            {' '}
+            Save{' '}
+          </Button>
+        </div>
+        <Row style={{ margin: '20px 0' }}>{msg && <span> {msg} </span>}</Row>
+
+        <div>
+          <AddCategoryBloack categorys={categorys} />
+        </div>
         <div className="editorWrapper">
           {storyData &&
-            !global.isEmptyObject(storyData) && <EditorComponent ref="editorComponent" storyData={storyData} />}
+            !global.isEmptyObject(storyData) && (
+              <EditorComponent ref="editorComponent" storyData={storyData} />
+            )}
         </div>
       </div>
     )
