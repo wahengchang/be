@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PresentationalComponent from './index'
-import dao from './dao'
+import daoStory from '../../lib/dao/story'
+import daoCategorys from '../../lib/dao/categorys'
 import firebase from 'firebase'
 
 class Container extends Component {
@@ -8,27 +9,45 @@ class Container extends Component {
     super(props)
     this.storyId = this.props.match.params.id
     this.database = firebase.database()
-    this.dao = new dao(this.database, this.storyId)
-    this.state = { storyData: {} }
+    this.daoStory = new daoStory(this.database, this.storyId)
+    this.daoCategorys = new daoCategorys(this.database)
+    this.state = {
+      storyData: {},
+      categorys: [],
+      selectedCategory: []
+    }
   }
 
   componentDidMount() {
-    this.dao.on(storyData => {
-      return this.setState({ storyData })
+    this.daoStory.on(storyData => {
+      const { categorys = {} } = storyData
+      const selectedCategory = Object.entries(categorys).map(item => item[0])
+      return this.setState({ storyData, selectedCategory })
+    })
+
+    this.daoCategorys.on(categorys => {
+      return this.setState({ categorys })
     })
   }
 
   onHandleSaveStory(id, payload) {
-    return this.dao.updateById(id, payload)
+    return this.daoStory.updateById(id, payload)
+  }
+
+  onHandleChangeCategory(selectedCategory) {
+    this.setState({ selectedCategory })
   }
 
   render() {
     const storyId = this.storyId
-    const { storyData } = this.state
+    const { storyData, categorys, selectedCategory } = this.state
     return (
       <PresentationalComponent
         storyId={storyId}
         storyData={storyData}
+        categorys={categorys}
+        selectedCategory={selectedCategory}
+        onHandleChangeCategory={this.onHandleChangeCategory.bind(this)}
         onHandleSaveStory={this.onHandleSaveStory.bind(this)}
       />
     )

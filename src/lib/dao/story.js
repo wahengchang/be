@@ -1,5 +1,5 @@
-const Base = require('../../lib/daoBase.js')
-const { reader: storyParser } = require('../../lib/dataParser/story')
+const Base = require('../daoBase.js')
+const { reader: storyParser } = require('../dataParser/story')
 
 module.exports = class Story extends Base {
   constructor(database, storyId) {
