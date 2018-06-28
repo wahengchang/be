@@ -1,0 +1,14 @@
+.addCategoryBlockWrapper {
+  display: flex;
+  margin-bottom: 20px;
+  line-height: 30px;
+}
+
+.addCategoryTitle {
+  margin-right: 20px;
+}
+
+.addCategorySelector {
+  min-width: 400px;
+  width: 80%;
+}

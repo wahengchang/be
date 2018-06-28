@@ -1,7 +1,14 @@
 .editorPageWrapper {
   margin: 0 auto;
+  padding-bottom: 100px;
 }
 .editorWrapper {
   width: 100%;
   background: white;
+}
+
+.editorPageTitleBox {
+  display: flex;
+  line-height: 30px;
+  justify-content: space-between;
 }

@@ -1,4 +1,4 @@
-const Base = require('../../lib/daoBase.js')
+const Base = require('../daoBase.js')
 
 module.exports = class Categorys extends Base {
   constructor(database) {

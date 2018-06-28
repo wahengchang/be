@@ -1,27 +1,27 @@
 import React, { Component } from 'react'
 import PresentationalComponent from './index'
-import dao from './dao'
+import daoCategorys from '../../lib/dao/categorys'
 import firebase from 'firebase'
 
 class Container extends Component {
   constructor(props) {
     super(props)
     this.database = firebase.database()
-    this.dao = new dao(this.database)
+    this.daoCategorys = new daoCategorys(this.database)
     this.state = { categorys: [] }
   }
 
   componentDidMount() {
-    this.dao.on(categorys => {
+    this.daoCategorys.on(categorys => {
       return this.setState({ categorys })
     })
   }
 
   updateCategoryById = (id, payload) => {
-    return this.dao.updateById(id, payload)
+    return this.daoCategorys.updateById(id, payload)
   }
   createCategory = payload => {
-    return this.dao.create(payload)
+    return this.daoCategorys.create(payload)
   }
 
   render() {
