@@ -12,7 +12,17 @@ export default class AtomicEmbedComponent extends React.Component {
   }
   render() {
     const { url } = this.props.data
-    const innerHTML = `${url}`
+    let innerHTML
+    if (url.indexOf('www.youtube.com') !== -1) {
+      const _url = new URL(url)
+      const getVideoHash = _url.searchParams.get('v')
+      innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${getVideoHash}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`
+    }
+    if (url.indexOf('youtu.be') !== -1) {
+      const _url = new URL(url)
+      const getVideoHash = _url.pathname
+      innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${getVideoHash}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`
+    }
     return (
       <EmbededVideoBlock>
         <div dangerouslySetInnerHTML={{ __html: innerHTML }} />
