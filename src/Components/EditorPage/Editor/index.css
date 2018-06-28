@@ -9,3 +9,7 @@
   margin: auto;
   min-height: 760px;
 }
+
+.md-block.md-block-image > div {
+  text-align: center;
+}
