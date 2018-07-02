@@ -36,11 +36,11 @@ export default class VideoSideBtn extends React.Component {
   }
 
   render() {
-    return <VideoButton title="Add an embed Video" onClick={this.onClick} />
+    return <VideoButtonDiv title="Add an embed Video" onClick={this.onClick} />
   }
 }
 
-const VideoButton = styled.button`
+const VideoButtonDiv = styled.button`
   background-image: url(/static/video-128.png);
   background-size: 30px 30px;
   background-repeat: no-repeat;
