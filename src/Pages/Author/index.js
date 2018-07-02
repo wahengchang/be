@@ -111,7 +111,7 @@ class AuthorEditor extends Component {
             </Form>
           </div>
           <div className="author-edit-preview">
-            <img src={previewImage} />
+            <img src={previewImage} alt="author-preview-img" />
           </div>
         </div>
       </div>
