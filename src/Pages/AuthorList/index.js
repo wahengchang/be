@@ -30,7 +30,7 @@ class HomePage extends Component {
         {authors.map((item, index) => {
           const { name, description, imageUrl, createdAt, id } = item
           return (
-            <Row gutter={10} key={index} style={rowStyle}>
+            <Row gutter={16} key={index} style={rowStyle}>
               {/* <Col span={4}> {index}</Col> */}
               <Col span={6}>
                 <a href={`/author/${id}`}>
@@ -39,10 +39,14 @@ class HomePage extends Component {
                 </a>
               </Col>
               <Col span={6}>
-                {imageUrl ? <img src={imageUrl} className="userImage" /> : <p> Not found</p>}
+                {imageUrl ? (
+                  <img src={imageUrl} className="userImage" alt="profile-img" />
+                ) : (
+                  <b>Not found</b>
+                )}
               </Col>
-              <Col span={6}> {description}</Col>
-              <Col span={6}> {timestampToDateFormat(createdAt)} </Col>
+              <Col span={6}>{description}</Col>
+              <Col span={6}>{timestampToDateFormat(createdAt)}</Col>
             </Row>
           )
         })}
