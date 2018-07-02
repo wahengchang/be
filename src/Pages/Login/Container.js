@@ -13,10 +13,7 @@ class Container extends Component {
 
     return (
       <div>
-        <PresentationalComponent
-          currentUser={currentUser}
-          signin={this.signin}
-        />
+        <PresentationalComponent currentUser={currentUser} signin={this.signin} />
       </div>
     )
   }

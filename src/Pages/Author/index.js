@@ -60,7 +60,7 @@ class AuthorEditor extends Component {
     const { author } = this.props
     const { getFieldDecorator } = this.props.form
     const { previewImage } = this.state
-    const { id, name, about, description, createdAt, imageUrl: previewImageProps } = author
+    const { id, name, about, description } = author
 
     return (
       <div>
