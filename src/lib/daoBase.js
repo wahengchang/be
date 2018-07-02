@@ -7,6 +7,7 @@ module.exports = class Base {
   }
 
   static fbListToArray(fbList) {
+    if (!fbList) return []
     return Object.entries(fbList).map(([id, item]) => ({
       ...item,
       id
