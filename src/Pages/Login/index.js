@@ -53,13 +53,9 @@ class Login extends Component {
       <Form onSubmit={this.handleSubmit.bind(this)} style={style}>
         <legend>A Stacked Form</legend>
 
-        <FormItem>
-          {RequiredField({ field: 'email', placeholder: 'peter@peter.com' })}
-        </FormItem>
+        <FormItem>{RequiredField({ field: 'email', placeholder: 'peter@peter.com' })}</FormItem>
 
-        <FormItem>
-          {RequiredField({ field: 'password', placeholder: 'yourpassword' })}
-        </FormItem>
+        <FormItem>{RequiredField({ field: 'password', placeholder: 'yourpassword' })}</FormItem>
 
         <button type="submit" className="">
           Sign in

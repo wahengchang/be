@@ -5,11 +5,7 @@ import { connect } from 'react-redux'
 class Container extends Component {
   render() {
     const { currentUser = null } = this.props
-    if (
-      currentUser &&
-      typeof currentUser.isLogin === 'boolean' &&
-      !currentUser.isLogin
-    ) {
+    if (currentUser && typeof currentUser.isLogin === 'boolean' && !currentUser.isLogin) {
       return this.props.children
     } else {
       return null

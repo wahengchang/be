@@ -98,11 +98,7 @@ class HomePage extends Component {
 
   render() {
     const { categorys = [] } = this.props
-    const {
-      isUpdateModalVisible,
-      targetCategory,
-      isCreateModalVisible
-    } = this.state
+    const { isUpdateModalVisible, targetCategory, isCreateModalVisible } = this.state
     return (
       <div className="App">
         <h1> Cateogry </h1>

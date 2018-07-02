@@ -18,11 +18,14 @@
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "node_modules/.bin/eslint src/",
+    "lint-fix": "node_modules/.bin/eslint src/ --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "heroku-postbuild": "npm run build",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "prettier": "prettier  --no-semi --single-quote --write 'src/**/*.js'"
+
   },
   "repository": {
     "type": "git",
@@ -82,7 +85,8 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
-      "./node_modules/.bin/prettier --single-quote --write ",
+      "npm run prettier",
+      "npm run lint-fix",
       "git add"
     ]
   }
