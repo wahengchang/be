@@ -38,9 +38,9 @@ class StoryPage extends Component {
         </Row>
         <div className="storyWrapper">
           {storys.map((item, index) => {
-            const { id, name, categorys, author, createdAt = '' } = item
+            const { id, name, categorys: selectedCategorys, author, createdAt = '' } = item
             const targetAuthor = this.findAuthorById(author)
-            // console.log('item: ', item)
+
             return (
               <Row gutter={10} key={index} style={rowStyle}>
                 <Col span={6}>
@@ -63,7 +63,7 @@ class StoryPage extends Component {
                   </a>
                 </Col>
                 <Col span={8}>
-                  {this.findCategorysByCatMapping(categorys).map(item => (
+                  {this.findCategorysByCatMapping(selectedCategorys).map(item => (
                     <span key={item.name}> {item.name} </span>
                   ))}
                 </Col>
