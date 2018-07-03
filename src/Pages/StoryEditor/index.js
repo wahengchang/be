@@ -3,7 +3,7 @@ import './index.css'
 import { Row, Button } from 'antd'
 import DraftJS from 'draft-js'
 import EditorComponent from '../../Components/EditorPage/Editor'
-import AddCategoryBloack from '../../Components/EditorPage/AddCategoryBloack'
+import MultiItemsSeletor from '../../Components/EditorPage/MultiItemsSeletor'
 
 class EditorPage extends Component {
   constructor(props) {
@@ -45,10 +45,11 @@ class EditorPage extends Component {
         <div>
           {categorys &&
             categorys.length > 1 && (
-              <AddCategoryBloack
-                categorys={categorys}
-                selectedCategory={selectedCategory}
-                onHandleChangeCategory={onHandleChangeCategory}
+              <MultiItemsSeletor
+                title='Categorys'
+                items={categorys}
+                selectedItems={selectedCategory}
+                onHandleSelection={onHandleChangeCategory}
               />
             )}
         </div>
