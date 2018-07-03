@@ -4,26 +4,26 @@ import './index.css'
 import { Select } from 'antd'
 const Option = Select.Option
 
-export default class AddCategoryBloack extends React.Component {
+export default class MultiItemsSeletor extends React.Component {
   handleChange = value => {
-    const { onHandleChangeCategory } = this.props
-    onHandleChangeCategory(value)
+    const { onHandleSelection } = this.props
+    onHandleSelection(value)
   }
 
   render() {
-    const { categorys, selectedCategory } = this.props
+    const { title, items, selectedItems } = this.props
     return (
       <div className="addCategoryBlockWrapper">
-        <span className="addCategoryTitle"> Category </span>
+        <span className="addCategoryTitle"> {title} </span>
         <div className="addCategorySelector">
           <Select
             mode="tags"
             style={{ width: '100%' }}
             placeholder="Select a Category"
             onChange={this.handleChange}
-            defaultValue={selectedCategory}
+            defaultValue={selectedItems}
           >
-            {categorys.map(item => (
+            {items.map(item => (
               <Option value={item.id} key={item.id}>
                 {item.name}
               </Option>
