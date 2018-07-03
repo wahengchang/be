@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './index.css'
 import { Row, Col, Button, Icon } from 'antd'
 import { timestampToDateFormat } from '../../lib/time'
+import { squareDiv } from '../../lib/style'
 
 const rowStyle = {
   height: '50px',
@@ -40,7 +41,7 @@ class HomePage extends Component {
               </Col>
               <Col span={6}>
                 {imageUrl ? (
-                  <img src={imageUrl} className="userImage" alt="profile-img" />
+                  <div className="userImage" style={squareDiv(imageUrl)} />
                 ) : (
                   <b>Not found</b>
                 )}

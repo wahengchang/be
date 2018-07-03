@@ -5,10 +5,21 @@
 }
 
 .addCategoryTitle {
+  width: 80px;
   margin-right: 20px;
 }
 
 .addCategorySelector {
   min-width: 400px;
   width: 80%;
+}
+
+.editorAuthorSelectorWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.editorAuthorImageWrapper {
+  width: 30px;
+  height: 30px;
 }
