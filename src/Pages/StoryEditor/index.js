@@ -4,6 +4,7 @@ import { Row, Button } from 'antd'
 import DraftJS from 'draft-js'
 import EditorComponent from '../../Components/EditorPage/Editor'
 import MultiItemsSeletor from '../../Components/EditorPage/MultiItemsSeletor'
+import SingleSelector from '../../Components/EditorPage/SingleSelector'
 
 class EditorPage extends Component {
   constructor(props) {
@@ -18,19 +19,28 @@ class EditorPage extends Component {
   }
 
   onHandleSaveStory = () => {
-    const { storyId, selectedCategory = [] } = this.props
+    const { storyId, selectedCategory = [], selectedAuthor: author = '' } = this.props
     const editorState = this.refs.editorComponent.state.editorState
     const data = JSON.stringify(DraftJS.convertToRaw(editorState.getCurrentContent()))
     const categorys = {}
     selectedCategory.forEach(item => (categorys[item] = true))
-    const payload = { data, categorys }
+    const payload = { data, categorys, author }
     this.setState({ msg: 'Updating story ...' })
     return this.props.onHandleSaveStory(storyId, payload).then(() => this.reset())
   }
 
   render() {
     const { msg } = this.state
-    const { storyId, storyData, categorys, selectedCategory, onHandleChangeCategory } = this.props
+    const {
+      storyId,
+      storyData,
+      categorys,
+      authors,
+      selectedCategory,
+      selectedAuthor,
+      onHandleChangeCategory,
+      onHandleChangeAuthor
+    } = this.props
     return (
       <div className="editorPageWrapper">
         <div className="editorPageTitleBox">
@@ -46,10 +56,20 @@ class EditorPage extends Component {
           {categorys &&
             categorys.length > 1 && (
               <MultiItemsSeletor
-                title='Categorys'
+                title="Categorys"
                 items={categorys}
                 selectedItems={selectedCategory}
                 onHandleSelection={onHandleChangeCategory}
+              />
+            )}
+
+          {authors &&
+            authors.length > 1 && (
+              <SingleSelector
+                title="Author"
+                items={authors}
+                selectedItem={selectedAuthor}
+                onHandleSelection={onHandleChangeAuthor}
               />
             )}
         </div>

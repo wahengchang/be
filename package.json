@@ -84,7 +84,7 @@
     "npm": "5.3.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
+    "src/**/*.{js,jsx,json}": [
       "npm run prettier",
       "npm run lint-fix",
       "git add"

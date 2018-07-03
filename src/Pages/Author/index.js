@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './index.css'
 import { message, Button, Icon, Form, Input, Upload } from 'antd'
+import { squareDiv } from '../../lib/style'
 const { TextArea } = Input
 const FormItem = Form.Item
 
@@ -110,9 +111,7 @@ class AuthorEditor extends Component {
               </FormItem>
             </Form>
           </div>
-          <div className="author-edit-preview">
-            <img src={previewImage} alt="author-preview-img" />
-          </div>
+          <div className="author-edit-preview" style={squareDiv(previewImage)} />
         </div>
       </div>
     )
