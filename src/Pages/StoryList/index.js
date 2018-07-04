@@ -3,11 +3,30 @@ import './index.css'
 import { Row, Col, Button, Icon } from 'antd'
 import { timestampToDateFormat } from '../../lib/time'
 import { squareDiv } from '../../lib/style'
+import { AUTHOR_IMAGE_NOT_FOUND } from '../../lib/const'
 
 const rowStyle = {
   height: '50px',
   borderTop: '1px solid lightgray',
   lineHeight: '50px'
+}
+
+const authorFieldDiv = targetAuthor => {
+  const { imageUrl: authorImageUrl, id, name } = targetAuthor
+  const imageUrl = authorImageUrl || AUTHOR_IMAGE_NOT_FOUND
+  return (
+    <div>
+      {name && (
+        <a href={`/author/${id}`}>
+          <div className="UserWrapperImageEditorList">
+            {<div className="spuareUserImageEditorList" style={squareDiv(imageUrl)} />}
+            <span> {name} </span>
+          </div>
+        </a>
+      )}
+      {!name && <span> No author </span>}
+    </div>
+  )
 }
 
 class StoryPage extends Component {
@@ -38,24 +57,12 @@ class StoryPage extends Component {
         </Row>
         <div className="storyWrapper">
           {storys.map((item, index) => {
-            const { id, name, categorys, author, createdAt = '' } = item
+            const { id, name, categorys: selectedCategorys, author, createdAt = '' } = item
             const targetAuthor = this.findAuthorById(author)
-            // console.log('item: ', item)
+
             return (
               <Row gutter={10} key={index} style={rowStyle}>
-                <Col span={6}>
-                  {targetAuthor.name && (
-                    <a href={`/author/${targetAuthor.id}`}>
-                      <div className="UserWrapperImageEditorList">
-                        <div
-                          className="spuareUserImageEditorList"
-                          style={squareDiv(targetAuthor.imageUrl)}
-                        />
-                        <span> {targetAuthor.name} </span>
-                      </div>
-                    </a>
-                  )}
-                </Col>
+                <Col span={6}>{authorFieldDiv(targetAuthor)}</Col>
                 <Col span={8}>
                   <a href={`/storys/${id}`}>
                     <Icon type="edit" />
@@ -63,7 +70,7 @@ class StoryPage extends Component {
                   </a>
                 </Col>
                 <Col span={8}>
-                  {this.findCategorysByCatMapping(categorys).map(item => (
+                  {this.findCategorysByCatMapping(selectedCategorys).map(item => (
                     <span key={item.name}> {item.name} </span>
                   ))}
                 </Col>
