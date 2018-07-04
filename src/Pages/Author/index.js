@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import './index.css'
 import { message, Button, Icon, Form, Input, Upload } from 'antd'
 import { squareDiv } from '../../lib/style'
+import { AUTHOR_IMAGE_NOT_FOUND } from '../../lib/const'
 const { TextArea } = Input
 const FormItem = Form.Item
-
-const imageNotFound =
-  'http://www.piniswiss.com/wp-content/uploads/2013/05/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png'
 
 const imageProps = {
   name: 'file',
@@ -21,7 +19,7 @@ class AuthorEditor extends Component {
     super(props)
     this.state = {
       msg: null,
-      previewImage: (props.author && props.author.imageUrl) || imageNotFound
+      previewImage: (props.author && props.author.imageUrl) || AUTHOR_IMAGE_NOT_FOUND
     }
   }
 
