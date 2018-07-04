@@ -6,13 +6,22 @@ import router from '../../router/publicConfig'
 const { Sider } = Layout
 const { Item } = Menu
 
+const iconMapping = {
+  Category: 'global',
+  Author: 'user',
+  Storys: 'book',
+  Logout: 'logout'
+}
+
 const RowItem = ({ path, title, isSidebar = true }) => {
   if (!isSidebar) return
+
+  console.log('title: ', title)
 
   return (
     <Item key={title}>
       <Link to={path}>
-        <Icon type="user" />
+        <Icon type={iconMapping[title] || 'user'} />
         <span className="nav-text">{title}</span>
       </Link>
     </Item>
