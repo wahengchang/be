@@ -3,13 +3,13 @@ import PresentationalComponent from './index'
 import daoStory from '../../lib/dao/story'
 import daoAuthors from '../../lib/dao/authors'
 import daoCategorys from '../../lib/dao/categorys'
-import firebase from 'firebase'
+import { database } from '../../lib/firebase'
 
 class Container extends Component {
   constructor(props) {
     super(props)
     this.storyId = this.props.match.params.id
-    this.database = firebase.database()
+    this.database = database
     this.daoStory = new daoStory(this.database, this.storyId)
     this.daoCategorys = new daoCategorys(this.database)
     this.daoAuthors = new daoAuthors(this.database)

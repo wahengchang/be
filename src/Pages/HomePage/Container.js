@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PresentationalComponent from './index'
 import daoCategorys from '../../lib/dao/categorys'
-import firebase from 'firebase'
+import { database } from '../../lib/firebase'
 
 class Container extends Component {
   constructor(props) {
     super(props)
-    this.database = firebase.database()
+    this.database = database
     this.daoCategorys = new daoCategorys(this.database)
     this.state = { categorys: [] }
   }

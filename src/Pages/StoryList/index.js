@@ -48,7 +48,7 @@ class StoryPage extends Component {
     })
   }
   render() {
-    const { storys = [], categorys, authors } = this.props
+    const { storys = [] } = this.props
     return (
       <div className="storyPageWrapper">
         <h1> Storys </h1>

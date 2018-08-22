@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import daoAuthors from '../../lib/dao/authors'
 import PresentationalComponent from './index'
-import firebase from 'firebase'
+import { database } from '../../lib/firebase'
 
 class Container extends Component {
   constructor(props) {
     super(props)
-    this.database = firebase.database()
+    this.database = database
     this.daoAuthors = new daoAuthors(this.database)
     this.state = { authors: [] }
   }
