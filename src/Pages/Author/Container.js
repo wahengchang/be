@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import PresentationalComponent from './index'
 import dao from './dao'
-import firebase from 'firebase'
+import { database } from '../../lib/firebase'
 
 class Container extends Component {
   constructor(props) {
     super(props)
     this.authorId = this.props.match.params.id
-    this.database = firebase.database()
+    this.database = database
     this.dao = new dao(this.database, this.authorId)
     this.state = { author: null }
   }

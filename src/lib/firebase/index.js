@@ -1,4 +1,4 @@
-const firebase = require('firebase')
+import * as firebase from 'firebase'
 
 if (!firebase.apps.length) {
   firebase.initializeApp({
@@ -12,7 +12,7 @@ if (!firebase.apps.length) {
   })
 }
 
-const signup = (email = '', password = '') => {
+export const signup = (email = '', password = '') => {
   return firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
@@ -25,7 +25,7 @@ const signup = (email = '', password = '') => {
     )
 }
 
-const signin = (email = '', password = '') => {
+export const signin = (email = '', password = '') => {
   return firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
@@ -38,11 +38,11 @@ const signin = (email = '', password = '') => {
     )
 }
 
-const signout = () => {
+export const signout = () => {
   return firebase.auth().signOut()
 }
 
-const getCurrentUser = cb => {
+export const getCurrentUser = cb => {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user && user.email) {
       return cb({
@@ -55,5 +55,6 @@ const getCurrentUser = cb => {
     return cb(null)
   })
 }
+export const database = firebase.database()
 
-module.exports = { signup, signin, signout, getCurrentUser }
+export default firebase

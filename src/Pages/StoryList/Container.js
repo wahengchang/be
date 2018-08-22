@@ -3,14 +3,14 @@ import dao from './dao'
 import daoAuthors from '../../lib/dao/authors'
 import daoCategorys from '../../lib/dao/categorys'
 import PresentationalComponent from './index'
-import firebase from 'firebase'
+import { database } from '../../lib/firebase'
 import { createEditorState } from 'medium-draft'
 import { convertToRaw } from 'draft-js'
 
 class Container extends Component {
   constructor(props) {
     super(props)
-    this.database = firebase.database()
+    this.database = database
     this.daoCategorys = new daoCategorys(this.database)
     this.daoAuthors = new daoAuthors(this.database)
     this.dao = new dao(this.database)
