@@ -1,47 +1,32 @@
 import { ImageSideButton, Block, addNewBlock } from 'medium-draft'
 import 'isomorphic-fetch'
 import './ImageSideBtn.css'
+import firebase from '../../../lib/firebase'
 
 export default class ImageSideBtn extends ImageSideButton {
   /*
     We will only check for first file and also whether
     it is an image or not.
     */
-  onChange(e) {
+  async onChange(e) {
+    const { close, setEditorState, getEditorState } = this.props
     const file = e.target.files[0]
     const name = file.name
+    const storageRef = firebase.storage().ref()
 
-    if (file.type.indexOf('image/') === 0) {
-      const formData = new FormData()
-      formData.append('file', file, name)
-      formData.append('name', name)
-      fetch('/ajax/upload', {
-        method: 'POST',
-        body: formData
-      }).then(response => {
-        if (response.status === 200) {
-          // Assuming server responds with
-          // `{ "url": "http://example-cdn.com/image.jpg"}`
-          return response.json().then(data => {
-            if (data.url) {
-              this.props.setEditorState(
-                addNewBlock(this.props.getEditorState(), Block.IMAGE, {
-                  src: data.url
-                })
-              )
-            }
-          })
-        }
-      })
+    if (file.type.indexOf('image/') !== 0) {
+      close()
+      throw new Error('Uploaded file is not images.')
     }
-    this.props.close()
-  }
 
-  // render() {
-  //   return (
-  //     <ImageButton title="Upload an Image from local">
-  //       Image
-  //     </ImageButton>
-  //   )
-  // }
+    const snapshoot = await storageRef.child(`images/${name}`).put(file)
+    const downloadURL = await snapshoot.ref.getDownloadURL()
+
+    setEditorState(
+      addNewBlock(getEditorState(), Block.IMAGE, {
+        src: downloadURL
+      })
+    )
+    close()
+  }
 }
